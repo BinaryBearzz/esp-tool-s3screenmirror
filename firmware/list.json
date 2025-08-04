@@ -1,0 +1,5 @@
+[
+  { "name": "Firmware v1.0", "path": "firmware-v1.0.bin" },
+  { "name": "Firmware v2.0", "path": "firmware-v2.0.bin" },
+  { "name": "Firmware v3.0", "path": "firmware-v3.0.bin" }
+]
