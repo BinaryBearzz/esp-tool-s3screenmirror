@@ -166,7 +166,7 @@
 
         async function fetchFirmwareList() {
             try {
-                const response = await fetch('https://binarybearzz.github.io/firmware/list.json');
+                const response = await fetch('https://github.com/BinaryBearzz/BinaryBearzz.github.io/blob/main/firmware/list.json');
                 const firmwares = await response.json(); // Assume JSON array [{ name: 'v1.0', path: 'firmware-v1.0.bin' }, ...]
                 console.log('Fetched firmwares:', firmwares);
                 const firmwareSelect = document.getElementById('firmwareSelect');
