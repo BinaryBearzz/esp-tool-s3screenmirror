@@ -1,0 +1,14 @@
+{
+  "name": "BinaryBearx Demo v1",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32",
+      "parts": [
+        { "path": "../firmware/version1/bootloader.bin", "offset": 4096 },       
+        { "path": "../firmware/version1/partitions.bin", "offset": 32768 } ,
+        { "path": "../firmware/version1/firmware.bin", "offset": 65536 }
+      ]
+    }
+  ]
+}

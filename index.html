@@ -10,7 +10,6 @@
     <br>
     <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
     </script>
-    <!-- <esp-web-install-button id="installButton" manifest="firmware/manifest.json"></esp-web-install-button> -->
     <br>
     <span>NOTE: Make sure to close anything using your devices com port (e.g. Serial monitor)</span>
   </div>
@@ -19,11 +18,11 @@
   </div>
   <select id="firmware-select">
     <option value="">SelectFirmware</option>
-    <option value="firmware/manifest-v1.json">Firmware v1.0</option>
-    <option value="firmware/manifest-v2.json">Firmware v2.0</option>
+    <option value="manifest.config/manifest-v1.json">Firmware v1.0</option>
+    <option value="manifest.config/manifest-v2.json">Firmware v2.0</option>
   </select>
 
-  <esp-web-install-button id="installButton" manifest="firmware/manifest.json">
+  <esp-web-install-button id="installButton" manifest="">
   </esp-web-install-button>
 
   <script>
