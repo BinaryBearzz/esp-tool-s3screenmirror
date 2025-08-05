@@ -9,7 +9,6 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f7f9fc;
-      background-image: url('/BinaryBearx-esp-web-tool/image/binarybearx.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -22,6 +21,14 @@
       height: 100vh;
     }
 
+    .bg-default {
+      background-image: url('/BinaryBearx-esp-web-tool/image/binarybearx.png');
+    }
+
+    .bg-fallback {
+      background-image: url('/image/binarybearx.png');
+    }
+
     .container {
       background: #fff;
       border-radius: 12px;
@@ -30,6 +37,15 @@
       width: 100%;
       max-width: 500px;
       text-align: center;
+
+      small.web-version {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 16px;
+        font-weight: bolder;
+        color: rgb(109, 109, 109)
+      }
     }
 
     h1 {
@@ -88,9 +104,24 @@
     <div id="notSupported" style="display: none;">
       ❌ Your browser does not support the Web Serial API. Try Google Chrome or Chromium-based browsers.
     </div>
+
+    <small class="web-version">ver.1.0.0</small>
+
   </div>
 
   <script>
+
+    const img = new Image();
+    img.onload = function () {
+      // Primary image loaded successfully; no change needed.
+    };
+    img.onerror = function () {
+      // Failed to load, switch to fallback.
+      document.body.classList.remove('bg-default');
+      document.body.classList.add('bg-fallback');
+    };
+    img.src = '/BinaryBearx-esp-web-tool/image/binarybearx.png';
+
     const select = document.getElementById("firmware-select");
     const installButton = document.getElementById("installButton");
 
