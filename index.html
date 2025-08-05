@@ -111,17 +111,20 @@
 
   <script>
 
-    const img = new Image();
-    img.onload = function () {
-      // Primary image loaded successfully; no change needed.
-    };
-    img.onerror = function () {
-      // Failed to load, switch to fallback.
-      document.body.classList.remove('bg-default');
-      document.body.classList.add('bg-fallback');
-    };
-    img.src = '/BinaryBearx-esp-web-tool/image/binarybearx.png';
+    const body = document.body;
+    const primaryImage = "/BinaryBearx-esp-web-tool/image/binarybearx.png";
 
+    const img = new Image();
+    img.onload = () => {
+      body.classList.add("bg-default");
+      body.classList.remove("bg-fallback");
+    };
+    img.onerror = () => {
+      body.classList.add("bg-fallback");
+      body.classList.remove("bg-default");
+    };
+    img.src = primaryImage;
+    
     const select = document.getElementById("firmware-select");
     const installButton = document.getElementById("installButton");
 
