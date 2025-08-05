@@ -5,9 +5,9 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "/BinaryBearxESPWebFlasher/firmware/version2/bootloader.bin", "offset": 4096 },       
-        { "path": "/BinaryBearxESPWebFlasher/firmware/version2/partitions.bin", "offset": 32768 } ,
-        { "path": "/BinaryBearxESPWebFlasher/firmware/version2/firmware.bin", "offset": 65536 }
+        { "path": "/BinaryBearx-esp-web-tool/firmware/version2/bootloader.bin", "offset": 4096 },       
+        { "path": "/BinaryBearx-esp-web-tool/firmware/version2/partitions.bin", "offset": 32768 } ,
+        { "path": "/BinaryBearx-esp-web-tool/firmware/version2/firmware.bin", "offset": 65536 }
       ]
     }
   ]

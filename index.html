@@ -1,29 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <title>BinaryBearx ESP Web Flasher</title>
+  <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      background-image: url('/image/binarybearx.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 10px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    esp-web-install-button {
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 20px;
+    }
+
+    #notSupported {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
 
 <body>
-  <h1>Sample project for demoing ESP Web Tools</h1>
+  <div class="container">
+    <h1>BinaryBearx ESP Web Firmware Flasher</h1>
 
-  <div id="main" style="display: none;">
+    <div id="main" style="display: none;">
+      <select id="firmware-select">
+        <option value="">⬇️ Select Firmware</option>
+        <option value="firmware/manifest-v1.json">Firmware v1.0</option>
+        <option value="firmware/manifest-v2.json">Firmware v2.0</option>
+      </select>
 
-    <br>
-    <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module">
-    </script>
-    <br>
-    <span>NOTE: Make sure to close anything using your devices com port (e.g. Serial monitor)</span>
+      <br>
+
+      <esp-web-install-button id="installButton" manifest=""></esp-web-install-button>
+
+      <div class="note">
+        NOTE: Please close any application using your device’s COM port (e.g., Serial Monitor).
+      </div>
+    </div>
+
+    <div id="notSupported" style="display: none;">
+      ❌ Your browser does not support the Web Serial API. Try Google Chrome or Chromium-based browsers.
+    </div>
   </div>
-  <div id="notSupported" style="display: none;">
-    Your browser does not support the Web Serial API. Try Chrome
-  </div>
-  <select id="firmware-select">
-    <option value="">SelectFirmware</option>
-    <option value="firmware/manifest-v1.json">Firmware v1.0</option>
-    <option value="firmware/manifest-v2.json">Firmware v2.0</option>
-  </select>
-
-  <esp-web-install-button id="installButton" manifest="">
-  </esp-web-install-button>
 
   <script>
     const select = document.getElementById("firmware-select");
@@ -31,9 +96,9 @@
 
     select.addEventListener("change", () => {
       const selectedManifest = select.value;
-      console.log("select:", selectedManifest)
       installButton.setAttribute("manifest", selectedManifest);
     });
+
     if (navigator.serial) {
       document.getElementById("notSupported").style.display = 'none';
       document.getElementById("main").style.display = 'block';
@@ -42,7 +107,6 @@
       document.getElementById("main").style.display = 'none';
     }
   </script>
-
 </body>
 
 </html>
