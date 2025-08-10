@@ -1,14 +1,14 @@
 {
   "name": "BinaryBearx s3screenmirror v1",
   "new_install_prompt_erase": true,
-  "flash_size": "8MB",
+  "version": "1.0.0",
   "builds": [
     {
       "chipFamily": "ESP32-S3",
       "parts": [
         {
           "path": "/esp-tool-s3screenmirror/firmware/version1/bootloader.bin",
-          "offset": 4096
+          "offset": 0
         },
         {
           "path": "/esp-tool-s3screenmirror/firmware/version1/partitions.bin",
