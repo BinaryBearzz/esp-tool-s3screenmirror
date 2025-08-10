@@ -21,19 +21,18 @@ flowchart TD
     PC["PC with Python App<br/>(Screen Capture & JPEG Compression)"]
     ESP32["ESP32 Device<br/>(WiFi + TCP Server + JPEG Decoder + TFT)"]
 
-    PC -->|Capture selected monitor screen| PC
-    PC -->|JPEG compress captured frame| PC
-    PC -->|Establish TCP connection| ESP32
-    PC -->|Send 4-byte frame size| ESP32
-    PC -->|Send JPEG frame data| ESP32
-    ESP32 -->|Decode JPEG and render on TFT| ESP32
-    PC -->|Repeat at interval (e.g., 50 ms)| PC
+    PC -->|"Capture selected monitor screen"| PC
+    PC -->|"JPEG compress captured frame"| PC
+    PC -->|"Establish TCP connection"| ESP32
+    PC -->|"Send 4-byte frame size"| ESP32
+    PC -->|"Send JPEG frame data"| ESP32
+    ESP32 -->|"Decode JPEG and render on TFT"| ESP32
+    PC -->|"Repeat at interval ~50ms"| PC
 
     subgraph Streaming_Process
         PC
         ESP32
     end
-
 ```
 
 - This web flasher is powered by [ESP Web Tools](https://github.com/esphome/esp-web-tools), a project by the [ESPHome](https://github.com/esphome) team.
