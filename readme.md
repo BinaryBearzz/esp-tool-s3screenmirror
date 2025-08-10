@@ -18,8 +18,8 @@
 
 ```mermaid
 flowchart TD
-    PC[PC with Python App<br>(Screen Capture & JPEG Compression)]
-    ESP32[ESP32 Device<br>(WiFi + TCP Server + JPEG Decoder + TFT)]
+    PC[PC with Python App (Screen Capture & JPEG Compression)]
+    ESP32[ESP32 Device (WiFi + TCP Server + JPEG Decoder + TFT)]
 
     PC -->|Capture selected monitor screen| PC
     PC -->|JPEG compress captured frame| PC
