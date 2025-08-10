@@ -4,12 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/BinaryBearx-esp-web-tool/favicon.ico" type="image/x-icon">
-  <title>BinaryBearx ESP Web Flasher</title>
+  <!-- <title>BinaryBearx ESP Web ESP32-1732S019</title> -->
   <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module"></script>
+  <script type="module"
+    src="https://cdn.jsdelivr.net/npm/improv-wifi-serial-sdk@2.5.0/dist/web/serial-launch-button.js"></script>
   <style>
-
-    
     :root {
       /* Inner shadow */
       --shadow-offset: 0;
@@ -49,11 +48,11 @@
     }
 
     .bg-default {
-      background-image: url('/BinaryBearx-esp-web-tool/image/binarybearx.png');
+      background-image: url('image/binarybearx.png');
     }
 
     .bg-fallback {
-      background-image: url('/image/binarybearx.png');
+      background-image: url('image/binarybearx.png');
     }
 
     .container {
@@ -76,7 +75,7 @@
       small.web-version {
         position: absolute;
         bottom: 10px;
-        right: 10px;
+        left: 10px;
         font-size: 16px;
         font-weight: bolder;
         font-style: italic;
@@ -120,19 +119,78 @@
       color: red;
       font-weight: bold;
     }
+
+    #power-by {
+      position: fixed;
+      right: 10px;
+      /* distance from the right edge */
+      bottom: 10px;
+      /* distance from the bottom edge */
+      font-size: 10px;
+      color: #888;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    improv-wifi-serial-launch-button a[slot="activate"] {
+      background-color: #3295ff;
+      /* Bootstrap blue */
+      color: white;
+      /* White text */
+      padding: 10px 20px;
+      /* Some padding */
+      border-radius: 5px;
+      /* Rounded corners */
+      text-decoration: none;
+      /* Remove underline */
+      display: inline-block;
+      /* Make it behave like a button */
+      font-weight: bold;
+      cursor: pointer;
+      /* Pointer cursor on hover */
+      transition: background-color 0.3s ease;
+    }
+
+    improv-wifi-serial-launch-button a[slot="activate"]:hover {
+      background-color: #7ab8fa;
+      /* Darker blue on hover */
+    }
+
+    .download-button {
+      background-color: #3295ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      outline: none;
+    }
+
+    .download-button:hover {
+      background-color: #7ab8fa;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
     <h1 style="text-shadow: 2px 2px 4px rgba(245, 245, 245, 0.5);">
-      BinaryBearx ESP Web Firmware Flasher
+      BinaryBearx ESP Web tool <br> "ESP32-1732S019"
     </h1>
     <div id="main" style="display: none;">
       <select id="firmware-select">
         <option value="">⬇️ Select Firmware</option>
-        <option value="firmware/manifest-v1.json">Firmware v1.0</option>
-        <option value="firmware/manifest-v2.json">Firmware v2.0</option>
       </select>
 
       <br>
@@ -143,19 +201,56 @@
         NOTE: Please close any application using your device’s COM port (e.g., Serial Monitor).
       </div>
     </div>
+    <br>
+
+    <improv-wifi-serial-launch-button>
+      <a href="#" slot="activate">Config Wi-Fi via Serial</a>
+      <span slot="unsupported">⚠️ Your browser does not support provisioning.</span>
+    </improv-wifi-serial-launch-button>
+    <br>
+    <button id="download-button" class="download-button">Tools ScreenCapture</button>
 
     <div id="notSupported" style="display: none;">
       ❌ Your browser does not support the Web Serial API. Try Google Chrome or Chromium-based browsers.
     </div>
 
-    <small class="web-version">ver.1.0.0</small>
+    <small class="web-version">v.1.0.0</small>
+    <div id="power-by">Powered by ESP Tool & improv-wifi</div>
 
   </div>
 
   <script>
 
+    const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+    const pathManifest = isLocal
+      ? `firmware/index.json`
+      : `/esp-tool-s3screenmirror/firmware/index.json`;
+
+    async function loadFirmwareList() {
+      try {
+        // Step 1: fetch the index file that lists all manifests
+        const index = await fetch("firmware/index.json").then(r => r.json());
+
+        // Step 2: get the select element
+        const select = document.getElementById("firmware-select");
+
+        // Step 3: loop through each manifest entry
+        for (const fw of index) {
+          // Example manifest entry: { "file": "manifest-v1.json", "name": "Firmware v1.0" }
+          const option = document.createElement("option");
+          option.value = "firmware/" + fw.file;
+          option.textContent = fw.name;
+          select.appendChild(option);
+        }
+      } catch (err) {
+        console.error("Error loading firmware list:", err);
+      }
+    }
+
+    loadFirmwareList();
+
     const body = document.body;
-    const primaryImage = "/BinaryBearx-esp-web-tool/image/binarybearx.png";
+    const primaryImage = "/image/binarybearx.png";
 
     const img = new Image();
     img.onload = () => {
@@ -183,6 +278,12 @@
       document.getElementById("notSupported").style.display = 'block';
       document.getElementById("main").style.display = 'none';
     }
+
+    document.getElementById('download-button').addEventListener('click', () => {
+      const url = "https://raw.githubusercontent.com/BinaryBearzz/esp-tool-s3screenmirror/main/tools/esp32-streammirrorcapture.exe";
+      window.open(url, '_blank');
+    });
+
   </script>
 </body>
 
