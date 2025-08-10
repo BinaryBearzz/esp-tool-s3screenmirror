@@ -8,6 +8,8 @@
   <script type="module" src="https://unpkg.com/esp-web-tools@7.3.1/dist/web/install-button.js?module"></script>
   <script type="module"
     src="https://cdn.jsdelivr.net/npm/improv-wifi-serial-sdk@2.5.0/dist/web/serial-launch-button.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     :root {
       /* Inner shadow */
@@ -103,6 +105,8 @@
     esp-web-install-button {
       margin-top: 10px;
       display: inline-block;
+      font-size: 1rem;
+      font-weight: bold;
       /* or any color */
     }
 
@@ -164,6 +168,7 @@
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
       display: inline-block;
       transition: background-color 0.3s ease;
@@ -186,7 +191,7 @@
 <body>
   <div class="container">
     <h1 style="text-shadow: 2px 2px 4px rgba(245, 245, 245, 0.5);">
-      BinaryBearx ESP Web tool <br> "ESP32-1732S019"
+      BinaryBearx ESP Web tool <br> "ESP32-1732S019" <br> "esp32-s3-screenmirror"
     </h1>
     <div id="main" style="display: none;">
       <select id="firmware-select">
@@ -216,6 +221,12 @@
 
     <small class="web-version">v.1.0.0</small>
     <div id="power-by">Powered by ESP Tool & improv-wifi</div>
+    <div style="margin-top: 15px;">
+      <a href="https://github.com/BinaryBearzz" target="_blank" rel="noopener noreferrer"
+        style="text-decoration:none; font-size: 24px; color: black;">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
 
   </div>
 
@@ -280,7 +291,7 @@
     }
 
     document.getElementById('download-button').addEventListener('click', () => {
-      const url = "https://raw.githubusercontent.com/BinaryBearzz/esp-tool-s3screenmirror/main/tools/esp32-streammirrorcapture.exe";
+      const url = "https://raw.githubusercontent.com/BinaryBearzz/esp-tool-s3screenmirror/main/tools/esp32-streammirrorcapture-continue.exe";
       window.open(url, '_blank');
     });
 

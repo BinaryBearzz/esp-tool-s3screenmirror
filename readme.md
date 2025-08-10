@@ -1,14 +1,39 @@
 # This my hobby make some web to flash my firmware
+# Firmware support for board 
+# Model
+- ESP32-1732S019 (320x170) 1.9inch.
+# Cheap Yellow Display (CYD) ESP32 Development Boards
 
+![Streaming Demo](./image/ESP32-1732S019.avif)
 
-You can play my esp web tool on [Click Here!! 🎛️](https://binarybearzz.github.io/BinaryBearx-esp-web-tool/)
+## Upload firmware [ESP-Tool Click Here!!🎛️](https://binarybearzz.github.io/esp-tool-s3screenmirror/)
 <br>
-#
-This web flasher is powered by [ESP Web Tools](https://github.com/esphome/esp-web-tools), a project by the [ESPHome](https://github.com/esphome) team.
 
-ESP Web Tools uses [esptool.js](https://github.com/esphome/esp-web-tools/tree/main/esptool-js) under the hood to flash firmware directly from your browser to ESP32 and ESP8266 devices.
+- This web flasher is powered by [ESP Web Tools](https://github.com/esphome/esp-web-tools), a project by the [ESPHome](https://github.com/esphome) team.
+
+- ESP Web Tools uses [esptool.js](https://github.com/esphome/esp-web-tools/tree/main/esptool-js) under the hood to flash firmware directly from your browser to ESP32 and ESP8266 devices.
+
+- [Improve-WiFi](https://www.improv-wifi.com/serial) config WiFi via Serial.
+
+```mermaid
+flowchart TD
+    PC[PC with Python App<br>(Screen Capture & JPEG Compression)]
+    ESP32[ESP32 Device<br>(WiFi + TCP Server + JPEG Decoder + TFT)]
+
+    PC -->|Capture selected monitor screen| PC
+    PC -->|JPEG compress captured frame| PC
+    PC -->|Establish TCP connection| ESP32
+    PC -->|Send 4-byte frame size| ESP32
+    PC -->|Send JPEG frame data| ESP32
+    ESP32 -->|Decode JPEG and render on TFT| ESP32
+    PC -->|Repeat at interval (e.g., 50 ms)| PC
+
+    subgraph Streaming Process
+        PC
+        ESP32
+    end
+```
 
 ## Authors
 
 - [@BinaryBearx](https://github.com/BinaryBearzz)
-
