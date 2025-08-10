@@ -21,11 +21,11 @@ flowchart TD
     PC["PC with Python App<br/>(Screen Capture & JPEG Compression)"]
     ESP32["ESP32 Device<br/>(WiFi + TCP Server + JPEG Decoder + TFT)"]
 
-    PC -->|1. Capture selected monitor screen| PC
-    PC -->|2. JPEG compress captured frame| PC
-    PC -->|3. Establish TCP connection| ESP32
-    PC -->|4. Send 4-byte frame size| ESP32
-    PC -->|5. Send JPEG frame data| ESP32
+    PC -->| 1. Capture selected monitor screen| PC
+    PC -->| 2. JPEG compress captured frame| PC
+    PC -->| 3. Establish TCP connection| ESP32
+    PC -->| 4. Send 4-byte frame size| ESP32
+    PC -->| 5. Send JPEG frame data| ESP32
     ESP32 -->|6. Decode JPEG and render on TFT| ESP32
     PC -->|7. Repeat at interval ~50 ms| PC
 
