@@ -18,21 +18,22 @@
 
 ```mermaid
 flowchart TD
-    PC["PC with Python App<br/>(Screen Capture & JPEG Compression)"]
-    ESP32["ESP32 Device<br/>(WiFi + TCP Server + JPEG Decoder + TFT)"]
+    PC["PC with Python App Screen Capture & JPEG Compression"]
+    ESP32["ESP32 Device (WiFi + TCP Server + JPEG Decoder + TFT)"]
 
-    PC -->| 1. Capture selected monitor screen| PC
-    PC -->| 2. JPEG compress captured frame| PC
-    PC -->| 3. Establish TCP connection| ESP32
-    PC -->| 4. Send 4-byte frame size| ESP32
-    PC -->| 5. Send JPEG frame data| ESP32
-    ESP32 -->|6. Decode JPEG and render on TFT| ESP32
-    PC -->|7. Repeat at interval ~50 ms| PC
+    PC -->| Capture selected monitor screen| PC
+    PC -->| JPEG compress captured frame| PC
+    PC -->|1.Establish TCP connection| ESP32
+    PC -->|2.Send 4-byte frame size| ESP32
+    PC -->|3.Send JPEG frame data| ESP32
+    ESP32 -->|4.Decode JPEG and render on TFT| ESP32
+    PC -->|Interval Repeat every 50 ms| PC
 
-    subgraph Streaming_Process
+    subgraph Streaming Process
         PC
         ESP32
     end
+
 ```
 
 - This web flasher is powered by [ESP Web Tools](https://github.com/esphome/esp-web-tools), a project by the [ESPHome](https://github.com/esphome) team.
