@@ -33,7 +33,7 @@ flowchart TD
         PC
         ESP32
     end
-
+```
 
 - This web flasher is powered by [ESP Web Tools](https://github.com/esphome/esp-web-tools), a project by the [ESPHome](https://github.com/esphome) team.
 
