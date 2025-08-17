@@ -16,7 +16,7 @@
 ## 🔨 Upload firmware [ESP-Tool Click Here!!👈🏻](https://binarybearzz.github.io/esp-tool-s3screenmirror/)
 ![Streaming Demo](./image/web-esp-tool.png)
 
-## ⬇️ Download [ScreenCaptureTool(Build exe)👇🏻](https://raw.githubusercontent.com/BinaryBearzz/esp-tool-s3screenmirror/refs/heads/main/tools/esp32-streammirrorcapture-continue.exe)
+## ⬇️ Download [ScreenCaptureTool(Build exe)👇🏻](https://github.com/BinaryBearzz/esp-tool-s3screenmirror/raw/refs/heads/main/tools/esp32-streammirrorcapture-continue.exe)
 
 ![Streaming Demo](./image/streammirrorcapture.png)
 
