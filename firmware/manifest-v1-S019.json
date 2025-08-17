@@ -1,0 +1,24 @@
+{
+  "name": "BinaryBearx screenmirror(ESP32-1732S019 S3) v1",
+  "new_install_prompt_erase": true,
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [
+        {
+          "path": "/esp-tool-s3screenmirror/firmware/version1_ESP32-1732S019/bootloader.bin",
+          "offset": 0
+        },
+        {
+          "path": "/esp-tool-s3screenmirror/firmware/version1_ESP32-1732S019/partitions.bin",
+          "offset": 32768
+        },
+        {
+          "path": "/esp-tool-s3screenmirror/firmware/version1_ESP32-1732S019/firmware.bin",
+          "offset": 65536
+        }
+      ]
+    }
+  ]
+}

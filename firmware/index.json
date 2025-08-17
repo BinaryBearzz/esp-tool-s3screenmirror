@@ -1,3 +1,4 @@
 [
-  { "file": "manifest-v1.json", "name": "s3-screenmirror v1.0" }
+  { "file": "manifest-v1-S019.json", "name": "ESP32-1732S019 S3(1.9inch) v1.0" },
+  { "file": "manifest-v1-28R.json", "name": "ESP32-2432S028R (2.8inch) v1.0" }
 ]

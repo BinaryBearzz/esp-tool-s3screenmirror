@@ -1,19 +1,26 @@
-# This my hobby make some web to flash my firmware
-# Firmware support for board 
-# Model
-- ESP32-1732S019 (320x170) 1.9inch.
+# This my hobby make some thing cool this web for flash firmware my project
+# Firmware support for board ( 2 model )
+# ⚡Model
+# 1. ESP32-1732S019 (320x170) 1.9inch.
 # Cheap Yellow Display (CYD) ESP32 Development Boards
 
 ![Streaming Demo](./image/ESP32-1732S019.avif)
 
-## Upload firmware [ESP-Tool Click Here!!👈🏻](https://binarybearzz.github.io/esp-tool-s3screenmirror/)
+
+# 2. ESP32-2432S028R (320x240) 1.9inch.
+# Cheap Yellow Display (CYD) ESP32 Development Boards
+
+![Streaming Demo](./image/ESP32-2432S028R.webp)
+
+
+## 🔨 Upload firmware [ESP-Tool Click Here!!👈🏻](https://binarybearzz.github.io/esp-tool-s3screenmirror/)
 ![Streaming Demo](./image/web-esp-tool.png)
 
-## Download [ScreenCaptureTool(Build exe)👇🏻](https://binarybearzz.github.io/esp-tool-s3screenmirror/tools/esp32-streammirrorcapture-continue.exe)
+## ⬇️ Download [ScreenCaptureTool(Build exe)👇🏻](https://binarybearzz.github.io/esp-tool-s3screenmirror/tools/esp32-streammirrorcapture-continue.exe)
 
 ![Streaming Demo](./image/streammirrorcapture.png)
 
-## Source code [ScreenCaptureTool👈🏻](https://github.com/BinaryBearzz/esp-tool-s3screenmirror/tree/main/tools/esp32-streammirrorcapture-continue.py)
+## 📄 Source code [ScreenCaptureTool👈🏻](https://github.com/BinaryBearzz/esp-tool-s3screenmirror/tree/main/tools/esp32-streammirrorcapture-continue.py)
 <br>
 
 ```mermaid
